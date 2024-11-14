@@ -1,4 +1,5 @@
 package hashingAndDocumentation;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,6 +12,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+
+/**
+ * SongProgram.java
+ * 
+ * @author
+ * @since Date
+ *        This class keeps track of the max score.
+ */
 
 public class SongProgram {
 
@@ -26,13 +35,13 @@ public class SongProgram {
     public void loadSongsFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            
-            //read in first line and do nothing with it
+
+            // read in first line and do nothing with it
             br.readLine();
-            
+
             while ((line = br.readLine()) != null) {
-            	
-            	//System.out.println(line);//for testing
+
+                // System.out.println(line);//for testing
                 // Create a SongRecord from the line and add it to the map
                 SongRecord song = new SongRecord(line);
                 songMap.put(song.getId(), song);
@@ -54,7 +63,7 @@ public class SongProgram {
             System.out.println(song);
         }
     }
-    
+
     // GUI method to search for a song by ID
     public void openSearchGui() {
         // Create the main frame
@@ -106,7 +115,7 @@ public class SongProgram {
         SongProgram program = new SongProgram();
 
         // Load songs from a CSV file
-        String filePath = "data.csv";  // replace with actual file path
+        String filePath = "data.csv"; // replace with actual file path
         program.loadSongsFromCSV(filePath);
 
         // Open GUI for searching songs by ID
@@ -118,11 +127,11 @@ public class SongProgram {
         SongProgram program = new SongProgram();
 
         // Load songs from a CSV file
-        String filePath = "data.csv";  // replace with actual file path
+        String filePath = "data.csv"; // replace with actual file path
         program.loadSongsFromCSV(filePath);
 
         // Demonstrate retrieving a song by ID
-        String testId = "4BJqT0PrAfrxzMOxytFOIz";  // replace with an actual ID from your file
+        String testId = "4BJqT0PrAfrxzMOxytFOIz"; // replace with an actual ID from your file
         SongRecord song = program.getSongById(testId);
         if (song != null) {
             System.out.println("Retrieved song: " + song);
@@ -134,4 +143,3 @@ public class SongProgram {
         program.printAllSongs();
     }
 }
-
